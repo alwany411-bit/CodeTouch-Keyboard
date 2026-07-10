@@ -176,7 +176,7 @@ class CodeKeyboardView(context: Context) : View(context) {
                 if (!longPressTriggered) {
                     activeKey?.let { key -> commitKey(key) }
                 }
-                cancelPendingLongPressf()
+                cancelPendingLongPress()
                 activeKey = null
                 activeRect = null
                 onKeyPreview?.invoke(null)
