@@ -162,7 +162,7 @@ class CodeKeyboardView(context: Context) : View(context) {
                 if (found != null) {
                     val (rect, key) = found
                     if (rect != activeRect) {
-                        cancelLongPress()
+                        cancelPendingLongPress()
                         activeRect = rect
                         activeKey = key
                         performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
@@ -176,14 +176,14 @@ class CodeKeyboardView(context: Context) : View(context) {
                 if (!longPressTriggered) {
                     activeKey?.let { key -> commitKey(key) }
                 }
-                cancelLongPress()
+                cancelPendingLongPressf()
                 activeKey = null
                 activeRect = null
                 onKeyPreview?.invoke(null)
                 invalidate()
             }
             MotionEvent.ACTION_CANCEL -> {
-                cancelLongPress()
+cancelPendingLongPress()
                 activeKey = null
                 activeRect = null
                 onKeyPreview?.invoke(null)
@@ -206,13 +206,13 @@ class CodeKeyboardView(context: Context) : View(context) {
     }
 
     private fun scheduleLongPressIfNeeded() {
-        cancelLongPress()
+        cancelPendingLongPress()
         if (activeKey?.longPressOutput != null) {
             longPressHandler.postDelayed(longPressRunnable, longPressDelayMs)
         }
     }
 
-    private fun cancelLongPress() {
+    private fun cancelPendingLongPress() {
         longPressHandler.removeCallbacks(longPressRunnable)
     }
 

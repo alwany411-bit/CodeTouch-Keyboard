@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.codetouch.keyboard.layout.jDefaultLayouts
+import com.codetouch.keyboard.layout.DefaultLayouts
 import com.codetouch.keyboard.layout.KeyboardLayer
 import com.codetouch.keyboard.settings.PreferencesManager
 import com.codetouch.keyboard.settings.ProgrammingLanguage
